@@ -42,4 +42,4 @@ addons:
     # Take care in resource usage, and consider the build frequency allowances per
     #   https://scan.coverity.com/faq#frequency
     branch_pattern: coverity_scan
-    branch_pattern: release*
+#    branch_pattern: release*
