@@ -13,29 +13,25 @@ script:
 
 env:
   global:
-    # COVERITY_SCAN_TOKEN
-    # ** specific to your project **
-    - secure: "-G7IsDmgOhNapLvyRY3cXQ"
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "AJmaaeNAtrvXf2GJ2mhw8L/bieYvEKMOlSXImL7gHaaj2EMVpjivP1au5HW0t5EzMddQ4h73ksaD1qIsQt2sNI5KEoRlHF97HPlvDOjC61cSbucsYJ0OZ8hB8K3W4PnmDg5MuyX7q3t3VyHfIveim46UsF0Om9GxzU9qHSZ/GcI="
 
 addons:
   coverity_scan:
 
     # GitHub project metadata
-    # ** specific to your project **
     project:
       name: horkana/Pinta
       version: 1.6
-      description: Pinta
+      description: Paint raster graphics with Pinta
 
     # Where email notification of build analysis results will be sent
     notification_email: alanhorkan+scan_notifications@gmail.com
 
-    # Commands to prepare for build_command
-    # ** likely specific to your build **
     build_command_prepend: ./autogen.sh
 
     # The command that will be added as an argument to "cov-build" to compile your project for analysis,
-    # ** likely specific to your build **
     build_command: make
 
     # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
