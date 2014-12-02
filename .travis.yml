@@ -1,6 +1,45 @@
+# Travis CI, Continous Integration testing http://travis-ci.org/
+# Coverity scan, static code analysis https://scan.coverity.com/travis_ci
+
+# set c as language, c# not supported
 language: c
+
 install:
   - sudo apt-get update -yqq
   - sudo apt-get install mono-devel mono-xbuild libgtk2.0-cil-dev intltool -yqq
+
 script:
   - ./autogen.sh && make
+
+env:
+  global:
+    # COVERITY_SCAN_TOKEN
+    # ** specific to your project **
+    - secure: "-G7IsDmgOhNapLvyRY3cXQ"
+
+addons:
+  coverity_scan:
+
+    # GitHub project metadata
+    # ** specific to your project **
+    project:
+      name: horkana/Pinta
+      version: 1.6
+      description: Pinta
+
+    # Where email notification of build analysis results will be sent
+    notification_email: alanhorkan+scan_notifications@gmail.com
+
+    # Commands to prepare for build_command
+    # ** likely specific to your build **
+    build_command_prepend: ./autogen.sh
+
+    # The command that will be added as an argument to "cov-build" to compile your project for analysis,
+    # ** likely specific to your build **
+    build_command: make
+
+    # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
+    # Take care in resource usage, and consider the build frequency allowances per
+    #   https://scan.coverity.com/faq#frequency
+    branch_pattern: coverity_scan
+    branch_pattern: release*
