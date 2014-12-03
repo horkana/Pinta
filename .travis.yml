@@ -26,19 +26,13 @@ addons:
       version: 1.6
       description: Paint raster graphics with Pinta
 
-    # Where email notification of build analysis results will be sent
     notification_email: alanhorkan+scan_notifications@gmail.com
 
-#    build_command_prepend: ./autogen.sh
+    # The commands passed as arguments to "cov-build" 
+    build_command_prepend: ./autogen.sh
+    build_command: make
+#    build_command_prepend: "msbuild /t:Clean"
+#    build_command: "msbuild /t:Rebuild"
 
-    # The command that will be added as an argument to "cov-build" to compile your project for analysis,
-#    build_command: make
-#    build_command: "xbuild Pinta.Install.proj"
-    build_command_prepend: "msbuild /t:Clean"
-    build_command:   "msbuild /t:Rebuild"
-
-    # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
-    # Take care in resource usage, and consider the build frequency allowances per
-    #   https://scan.coverity.com/faq#frequency
     branch_pattern: coverity_scan
 #    branch_pattern: release*
